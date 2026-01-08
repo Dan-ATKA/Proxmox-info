@@ -12,9 +12,9 @@ Je vais te montrer ce qui existe *clé en main*, et comment l’utiliser pour re
 
 Quand tu installes :
 
-'''
+```shell
 apk add acme-client
-'''
+```
 
 Alpine fournit automatiquement :
 
@@ -37,9 +37,9 @@ Quand tu installes `acme-client`, Alpine crée :
 
 ### ✔️ Un utilisateur dédié
 
-'''
+```bash
 acme:x:100:101:ACME client:/var/empty:/sbin/nologin
-'''
+```
 
 * pas de shell
 * pas de home
@@ -47,17 +47,17 @@ acme:x:100:101:ACME client:/var/empty:/sbin/nologin
 
 ### ✔️ Un répertoire dédié
 
-'''
+```
 /etc/acme
-'''
+```
 
 Avec permissions strictes.
 
 ### ✔️ Un service OpenRC
 
-'''
+```
 /etc/init.d/acme-client
-'''
+```
 
 
 Ce service :
@@ -68,9 +68,9 @@ Ce service :
 
 ### ✔️ Un cron OpenRC automatique
 
-'''
+```
 /etc/periodic/daily/acme-client
-'''
+```
 
 
 Il lance le renouvellement sans que tu aies à écrire un script.
@@ -83,7 +83,7 @@ Il lance le renouvellement sans que tu aies à écrire un script.
 
 Exemple minimal :
 
-'''
+```
 authority letsencrypt {
     api url "https://acme-v02.api.letsencrypt.org/directory"
     account key "/etc/acme/letsencrypt-privkey.pem"
@@ -96,27 +96,27 @@ domain "site1.example.com" {
     challenge http "/var/www/site1/.well-known/acme-challenge"
     post-hook "/usr/bin/kill -HUP $(pidof lighttpd)"
 }
-'''
+```
 
 
 ### 2) Donner à lighttpd accès en lecture aux certificats
 
 Tu peux faire :
 
-'''
+```
 chgrp lighttpd /etc/acme
 chmod 750 /etc/acme
-'''
+```
 
 
 Ou copier les certificats dans `/etc/lighttpd/certs` via un hook.
 
 ### 3) Activer le service
 
-'''
+```
 rc-update add acme-client default
 rc-service acme-client start
-'''
+```
 
 
 Et c’est tout.
