@@ -19,7 +19,7 @@ apk add acme-client
 Alpine fournit automatiquement :
 
 * un **service OpenRC** : `/etc/init.d/acme-client`
-* un **fichier de configuration** : `/etc/`[`acme-client.conf`](https://acme-client.conf)
+* un **fichier de configuration** : `/etc/acme-client.conf
 * un **répertoire dédié** : `/etc/acme`
 * un **utilisateur système dédié** : `acme`
 * des **permissions déjà durcies**
@@ -79,7 +79,7 @@ Il lance le renouvellement sans que tu aies à écrire un script.
 
 ## 3) Ce que tu dois faire toi-même (et c’est minime)
 
-### 1) Configurer `/etc/`[`acme-client.conf`](https://acme-client.conf)
+### 1) Configurer `/etc/acme-client.conf`
 
 Exemple minimal :
 
